@@ -1,0 +1,36 @@
+class BankAccount:
+    def __init__(self, account_number, account_holder_name, initial_balance=0.0):
+        self.__account_number = account_number
+        self.__account_holder_name = account_holder_name
+        self.__account_balance = initial_balance
+
+    def deposit(self, amount):
+        if amount > 0:
+            self.__account_balance += amount
+            print("Deposited ₹{}. New balance ₹{}".format(amount, self.__account_balance))
+        else:
+            print("Invalid deposit amount. Please deposit a positive amount.")
+
+    def withdraw(self, amount):
+        if amount > 0 and amount <= self.__account_balance:
+            self.__account_balance -= amount
+            print("Withdrawn ₹{}. New balance ₹{}".format(amount, self.__account_balance))
+        else:
+            print("Invalid withdraw amount or insufficient balance.")
+
+    def display_balance(self):
+        print("Account balance for {} (Account {}): ₹{}".format(self.__account_holder_name, self.__account_number, self.__account_balance))
+
+# Create an instance of the BankAccount class
+account = BankAccount(account_number="123456", account_holder_name="roja", initial_balance=5000.0)
+
+# Display the initial balance
+account.display_balance()
+
+# Deposit and withdraw
+account.deposit(500.0)
+account.withdraw(240.0)
+account.withdraw(20000.0)
+
+# Display the updated balance
+account.display_balance()
